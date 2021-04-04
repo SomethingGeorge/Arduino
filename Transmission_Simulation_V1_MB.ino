@@ -12,10 +12,10 @@
 void setup() {
   // put your setup code here, to run once:
             
-       pinMode(firstButton,INPUT);
-       pinMode(secondButton,INPUT);
-       pinMode(thirdButton,INPUT);
-       pinMode(fourthButton,INPUT);
+       pinMode(firstButton,INPUT);  // Park Button
+       pinMode(secondButton,INPUT); // Forward and First Gear (If Park is Enabled and This is Pressed Forward in First)
+       pinMode(thirdButton,INPUT);  // Second Gear (Will not Engage if Park or Reverse is Active)
+       pinMode(fourthButton,INPUT); // Geardown (Only if Pressed when Second Gear is Active) and Reverse (If Park is Enabled and This is Pressed Reverse)
        pinMode(firstLED,OUTPUT);
        pinMode(secondLED,OUTPUT);
        pinMode(thirdLED,OUTPUT);
@@ -24,17 +24,20 @@ void setup() {
             }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-
-    
-      if (digitalRead(firstButton)==HIGH) {
-            digitalWrite(firstLED,HIGH);
-      } if (digitalRead(secondButton)==HIGH){
+ 
+    // Park Enable, when Park Button is Pressed (firstButton) and Fourth Pushed
+      if (digitalRead(firstButton)==HIGH && digitalRead(fourthLED)==LOW) {
+            digitalWrite(firstLED,LOW);   
+      }  
+      
+      
+     // 
+      if (digitalRead(secondButton)==HIGH){
             digitalWrite(secondLED,HIGH);
             digitalWrite(firstLED,LOW);
-      } if (digitalRead(thirdButton)==HIGH){
+      }   if (digitalRead(thirdButton)==HIGH){
             digitalWrite(thirdLED,HIGH); 
-      } if (digitalRead(fourthButton)==HIGH){
+      }   if (digitalRead(fourthButton)==HIGH){
             digitalWrite(fourthLED,HIGH); 
             }
             Serial.println(digitalRead(firstButton));
