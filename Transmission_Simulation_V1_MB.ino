@@ -56,7 +56,7 @@ void loop() {
            Serial.println("You are in Reverse"); // Message readout 
       } 
 
-      while(reverseActive==HIGH &&digitalRead(firstButton)==LOW){
+      while(reverseActive==HIGH && digitalRead(firstButton)==LOW){
           digitalWrite(fourthLED,LOW);
           delay(500);
           digitalWrite(fourthLED,HIGH);
@@ -85,7 +85,7 @@ void loop() {
             digitalWrite(secondLED,HIGH); // first Gear is Engaged
             delay(3000);                  // Delay for 3 Seconds
             digitalWrite(fourthLED,LOW);  // Downshift LED turned off after 3 seconds (Downshift Complete)
-            Serial.println("Downshifted to First"); // Message readout     
+            Serial.println("Downshifted to First Gear"); // Message readout     
       } 
             
             delay(250); //delay program
